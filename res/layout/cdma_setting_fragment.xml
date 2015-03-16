@@ -1,0 +1,129 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/content_bg"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                tools:context="com.zte.monitor.app.activity.SettingsActivity">
+
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="保存"
+            android:layout_alignParentBottom="true"
+            android:textColor="#ffffff"
+            android:id="@+id/save"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:layout_marginBottom="10dp"/>
+
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+                android:scrollbars="none" android:overScrollMode="never"
+                android:fadingEdge="none" android:layout_above="@id/save">
+
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_marginTop="10dp">
+
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp">
+
+                <TextView android:layout_width="80dp" android:layout_height="fill_parent"
+                          android:text="共网环境"
+                          android:textColor="#ffffff"
+                          android:textSize="12sp"
+                          android:id="@+id/button_get_station_frequency_transparent"
+                          android:layout_alignParentRight="true"
+                          android:layout_alignParentBottom="true"
+                          android:layout_marginRight="2dp"
+                          android:layout_marginLeft="2dp"
+                          android:background="@drawable/button_bg"/>
+
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                          android:layout_toLeftOf="@id/button_get_station_frequency_transparent"
+                          android:text="工作扰码" android:layout_marginBottom="4dp"
+                          android:layout_marginTop="10dp"
+                          android:id="@+id/label"/>
+
+                <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:id="@+id/frequency_edt"
+                          android:layout_below="@id/label"
+                          android:inputType="number"
+                          android:layout_toLeftOf="@id/button_get_station_frequency_transparent"
+                          android:layout_marginTop="2dp"
+                          android:paddingTop="16dp"
+                          android:paddingBottom="16dp"
+                          android:paddingLeft="20dp"
+                          android:background="@drawable/list_item_bg"/>
+
+                <Button android:layout_width="80dp" android:layout_height="fill_parent"
+                        android:text="共网环境"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        android:id="@+id/button_get_station_frequency"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignTop="@id/frequency_edt"
+                        android:layout_alignBottom="@id/frequency_edt"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:background="@drawable/button_bg"/>
+            </RelativeLayout>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:text="功率"
+                      android:layout_marginBottom="4dp"/>
+            <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+                     android:id="@+id/sp_user_density"
+                     android:paddingLeft="10dp"
+                     android:paddingTop="16dp"
+                     android:paddingBottom="16dp"
+                     android:background="@drawable/spinner_bg_drawable"/>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:text="工作模式"
+                      android:layout_marginBottom="4dp"/>
+            <RadioGroup android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/list_item_bg">
+                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                             android:text="同步"
+                             android:textColor="#ffffff"
+                             android:checked="true"/>
+                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                             android:layout_marginLeft="20dp"
+                             android:textColor="#ffffff"
+                             android:text="非同步"
+                        />
+            </RadioGroup>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:text="侦码模式"
+                      android:layout_marginBottom="4dp"/>
+            <RadioGroup android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/list_item_bg">
+                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                             android:text="反制"
+                             android:textColor="#ffffff"
+                             android:checked="true"/>
+                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                             android:layout_marginLeft="20dp"
+                             android:textColor="#ffffff"
+                             android:text="定位"
+                        />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white">
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:id="@+id/new_sensitive_layout" android:orientation="vertical">
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:background="@drawable/add_sensitive_layout_bg"
+                  android:id="@+id/add_sensitive_word_layout"
+                  android:paddingTop="10dp"
+                  android:paddingBottom="10dp">
+
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:src="@drawable/add"
+                   android:layout_marginLeft="20dp"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="添加敏感词" android:layout_gravity="center_vertical"
+                  android:layout_marginLeft="20dp" android:textColor="@color/blue"/>
+    </LinearLayout>
+    <TextView android:layout_width="fill_parent" android:layout_height="1dp"
+              android:background="@color/gray"/>
+
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="保存" android:background="@drawable/button_bg"
+            android:layout_marginTop="10dp" android:id="@+id/save"/>
+</LinearLayout>

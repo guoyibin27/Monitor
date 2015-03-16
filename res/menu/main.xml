@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.zte.monitor.app.activity.MainActivity">
+
+    <item android:id="@+id/action_search"
+          android:title="@string/action_search"
+          android:icon="@drawable/search_icon"
+          android:orderInCategory="100"
+          android:showAsAction="always"
+          android:actionProviderClass="com.zte.monitor.app.activity.widget.SearchActionProvider"/>
+
+    <item android:id="@+id/action_add"
+          android:title="@string/action_add"
+          android:icon="@drawable/add_user"
+          android:orderInCategory="101"
+          android:showAsAction="always"/>
+
+    <item android:id="@+id/action_more"
+          android:title="更多"
+          android:icon="@drawable/more"
+          android:orderInCategory="102"
+          android:showAsAction="always"
+          android:actionProviderClass="com.zte.monitor.app.activity.widget.SystemMenuActionProvider"/>
+</menu>

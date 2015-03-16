@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/content_bg"
+                tools:context="com.zte.monitor.app.activity.MainActivity">
+
+    <ListView android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:id="@+id/list_view"
+              android:cacheColorHint="@android:color/transparent"
+              android:scrollbars="none"
+              android:fadingEdge="none"
+              android:dividerHeight="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="10dp"
+              android:divider="@android:color/transparent"
+              android:overScrollMode="never"/>
+</RelativeLayout>

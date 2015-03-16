@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@drawable/content_bg">
+
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="发送"
+            android:layout_alignParentBottom="true"
+            android:textColor="#ffffff"
+            android:id="@+id/send"
+            android:background="@drawable/button_bg"
+            android:layout_marginBottom="10dp"/>
+
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="添加IMSI"
+            android:textColor="#ffffff"
+            android:id="@+id/add_imsi"
+            android:layout_above="@id/send"
+            android:background="@drawable/button_bg"
+            android:layout_marginBottom="10dp"/>
+
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+                android:scrollbars="none"
+                android:layout_above="@id/add_imsi"
+                android:overScrollMode="never" android:fadingEdge="none">
+
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_marginTop="20dp">
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                      android:text="伪装号码"
+                      android:layout_marginBottom="4dp"/>
+
+            <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:id="@+id/edt_phone_number"
+                      android:paddingTop="16dp"
+                      android:paddingBottom="16dp"
+                      android:paddingLeft="20dp"
+                      android:textColor="#ffffff"
+                      android:background="@drawable/list_item_bg"/>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginBottom="4dp"
+                      android:text="短信中心号"/>
+            <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+                     android:id="@+id/sms_center_spinner"
+                     android:background="@drawable/spinner_bg_drawable"/>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                      android:text="短信内容"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginBottom="4dp"/>
+
+            <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:id="@+id/edt_sms_content"
+                      android:paddingTop="16dp"
+                      android:paddingBottom="16dp"
+                      android:paddingLeft="20dp"
+                      android:textColor="#ffffff"
+                      android:background="@drawable/list_item_bg"/>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="#ffffff" android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:text="IMSI列表"
+                      android:layout_marginBottom="4dp"/>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:singleLine="true" android:maxLength="15"
+                      android:textColor="#ffffff"
+                      android:paddingTop="16dp"
+                      android:paddingBottom="16dp"
+                      android:paddingLeft="20dp"
+                      android:text="asdfsfsdf,sdfad,sf,afd,afa,df,asf"
+                      android:background="@drawable/list_item_bg"
+                      android:id="@+id/imsi_list"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,237 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/content_bg"
+                tools:context="com.zte.monitor.app.activity.UserDetailActivity">
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:id="@+id/buttonLayout"
+                  android:layout_alignParentBottom="true"
+                  android:layout_marginBottom="10dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginRight="20dp"
+                  android:orientation="vertical">
+
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textColor="#ffffff" android:text="删除用户"
+                android:id="@+id/delete_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/delete_button_bg"/>
+
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textColor="#ffffff" android:text="修改用户"
+                android:id="@+id/edit_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_bg"
+                />
+
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textColor="#ffffff" android:text="确定"
+                android:id="@+id/confirm_edit_button"
+                android:background="@drawable/button_bg"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
+
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textColor="#ffffff" android:text="取消"
+                android:id="@+id/cancel_edit_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_bg"
+                android:visibility="gone"/>
+    </LinearLayout>
+
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+                android:overScrollMode="never" android:scrollbars="none" android:fadingEdge="none"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_above="@id/buttonLayout">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                      android:orientation="vertical">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:id="@+id/view_layout">
+
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginLeft="20dp"
+                          android:text="基本信息"
+                          android:textColor="#ffffff"
+                          android:textSize="12sp"
+                          android:layout_marginBottom="1dp"/>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:paddingTop="16dp"
+                                android:paddingBottom="16dp"
+                                android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="姓名" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:id="@+id/tv_username" android:layout_alignParentRight="true"
+                              android:textColor="#ffffff"
+                              android:layout_marginRight="20dp"
+                              android:text="未知"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg" android:layout_marginTop="2dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="IMSI" android:layout_alignParentLeft="true"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:layout_marginRight="20dp"
+                              android:id="@+id/tv_imsi" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg" android:layout_marginTop="2dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="IMEI" android:layout_alignParentLeft="true"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:layout_marginRight="20dp"
+                              android:id="@+id/tv_imei" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg" android:layout_marginTop="2dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="本机号码" android:layout_alignParentLeft="true"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:layout_marginRight="20dp"
+                              android:id="@+id/tv_phone_number" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg" android:layout_marginTop="2dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="最近更新时间" android:layout_alignParentLeft="true"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:layout_marginRight="20dp"
+                              android:id="@+id/tv_last_updated" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg" android:layout_marginTop="2dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="用户属性" android:layout_alignParentLeft="true"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:layout_marginRight="20dp"
+                              android:id="@+id/tv_user_pro" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical" android:id="@+id/edit_layout"
+                          android:visibility="gone">
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginLeft="20dp"
+                          android:text="用户名称"
+                          android:textColor="#ffffff"
+                          android:textSize="12sp"
+                          android:layout_marginBottom="1dp"/>
+
+                <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:layout_weight="2"
+                          android:id="@+id/edt_username" android:layout_alignParentRight="true"
+                          android:textColor="#ffffff"
+                          android:layout_marginTop="2dp"
+                          android:paddingLeft="20dp"
+                          android:paddingTop="16dp"
+                          android:paddingBottom="16dp"
+                          android:background="@drawable/list_item_bg"
+                          android:text="未知"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginLeft="20dp"
+                          android:text="IMSI" android:layout_alignParentLeft="true"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:layout_marginTop="2dp"
+                          android:paddingLeft="20dp"
+                          android:paddingTop="16dp"
+                          android:textColor="#ffffff"
+                          android:paddingBottom="16dp"
+                          android:background="@drawable/list_item_bg"
+                          android:id="@+id/tv_imsi_edit" android:layout_alignParentRight="true"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginLeft="20dp"
+                          android:text="IMEI" android:layout_alignParentLeft="true"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:layout_marginTop="2dp"
+                          android:paddingLeft="20dp"
+                          android:paddingTop="16dp"
+                          android:textColor="#ffffff"
+                          android:paddingBottom="16dp"
+                          android:background="@drawable/list_item_bg"
+                          android:id="@+id/tv_imei_edit" android:layout_alignParentRight="true"/>
+
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:layout_weight="1"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginLeft="20dp"
+                          android:text="本机号码" android:layout_alignParentLeft="true"/>
+                <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:maxLength="11"
+                          android:inputType="number"
+                          android:layout_marginTop="2dp"
+                          android:paddingLeft="20dp"
+                          android:paddingTop="16dp"
+                          android:paddingBottom="16dp"
+                          android:background="@drawable/list_item_bg"
+                          android:id="@+id/edt_phone_number" android:layout_alignParentRight="true"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginLeft="20dp"
+                          android:text="最近更新时间" android:layout_alignParentLeft="true"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:layout_marginTop="2dp"
+                          android:paddingLeft="20dp"
+                          android:paddingTop="16dp"
+                          android:textColor="#ffffff"
+                          android:paddingBottom="16dp"
+                          android:background="@drawable/list_item_bg"
+                          android:id="@+id/tv_last_updated_edit" android:layout_alignParentRight="true"/>
+
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:layout_weight="1"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginLeft="20dp"
+                          android:text="用户属性" android:layout_alignParentLeft="true"/>
+                <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+                         android:textColor="#ffffff"
+                         android:paddingLeft="10dp"
+                         android:paddingTop="16dp"
+                         android:paddingBottom="16dp"
+                         android:background="@drawable/spinner_bg_drawable"
+                         android:id="@+id/spinner_user_pro" android:layout_alignParentRight="true"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

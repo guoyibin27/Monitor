@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:id="@+id/control_layout"
+                  android:layout_alignParentBottom="true"
+                  android:layout_marginBottom="10dp"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginRight="20dp"
+                  android:gravity="center">
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:text="播放"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_bg"
+                android:id="@+id/play"/>
+        <TextView android:layout_width="40dp" android:layout_height="fill_parent"/>
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:text="停止"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_bg"
+                android:id="@+id/stop"/>
+    </LinearLayout>
+
+    <ListView android:layout_width="fill_parent" android:layout_height="fill_parent"
+              android:overScrollMode="never"
+              android:scrollbars="none"
+              android:layout_above="@id/control_layout"
+              android:id="@+id/file_name_list_view"/>
+</RelativeLayout>

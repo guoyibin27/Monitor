@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/layout">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                    android:background="@drawable/list_item_bg"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+        
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:layout_margin="20dp"
+                   android:id="@+id/user_pro_icon"
+                   android:layout_centerVertical="true"
+                   android:background="@drawable/icon_unknown_user"/>
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_centerVertical="true"
+                      android:layout_toRightOf="@id/user_pro_icon">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="用户名:"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:id="@+id/user_name"
+                              android:textColor="#ffffff"
+                              android:layout_marginLeft="4dp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:id="@+id/phone_layout"
+                              android:layout_marginLeft="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="电话:"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:id="@+id/tv_phone_number"
+                              android:textColor="#ffffff"
+                              android:layout_marginLeft="4dp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_marginLeft="20dp">
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                               android:background="@drawable/icon_sensitive_word"
+                               android:layout_marginLeft="10dp"
+                               android:visibility="gone"
+                               android:id="@+id/has_sensitive_word"/>
+
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                               android:background="@drawable/icon_sensitive_phone"
+                               android:layout_marginLeft="10dp"
+                               android:visibility="gone"
+                               android:id="@+id/has_sensitive_phone"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/status_layout">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="状态:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/tv_status"
+                          android:textColor="#ffffff"
+                          android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="IMSI:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/tv_imsi"
+                          android:textColor="#ffffff"
+                          android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="IMEI:"
+                          android:textColor="#ffffff"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/tv_imei"
+                          android:textColor="#ffffff"
+                          android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:id="@+id/power_layout">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="场强:"
+                          android:textColor="#ffffff"
+                          android:id="@+id/power_label"
+                          android:layout_centerVertical="true"
+                          android:layout_alignParentLeft="true"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/power_text"
+                          android:layout_alignParentRight="true"
+                          android:textColor="#ffffff"
+                          android:text="0"
+                          android:layout_centerVertical="true"
+                          android:layout_marginRight="20dp"/>
+                <ProgressBar android:layout_width="fill_parent" android:layout_height="wrap_content"
+                             android:layout_toLeftOf="@id/power_text"
+                             android:layout_toRightOf="@id/power_label"
+                             style="?android:progressBarStyleHorizontal"
+                             android:max="63"
+                             android:layout_centerVertical="true"
+                             android:layout_marginRight="10dp"
+                             android:layout_marginLeft="10dp"
+                             android:id="@+id/power_progress"
+                        />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

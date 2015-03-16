@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_section_title">
+        <item>黑白名单用户</item>
+        <item>未知用户</item>
+    </string-array>
+
+    <string-array name="frequency">
+        <item>自动扫频</item>
+        <item>小区信息获取</item>
+    </string-array>
+</resources>

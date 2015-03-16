@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/content_bg">
+    <com.zte.monitor.app.activity.widget.PagerSlidingTab
+            xmlns:pst="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            pst:pstShouldExpand="true"
+            pst:pstIndicatorColor="#2cb6e1"
+            pst:pstIndicatorHeight="2dp"
+            pst:pstSelectedTextColor="#2cb6e1"
+            pst:pstDividerColor="#ffffff"
+            pst:pstTextColor="#ffffff"
+            pst:pstTabBackground="@drawable/tab_bg"
+            android:layout_height="48dip"
+            />
+
+    <android.support.v4.view.ViewPager
+            android:layout_width="fill_parent" android:layout_height="fill_parent"
+            android:id="@+id/view_pager"/>
+</LinearLayout>

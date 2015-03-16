@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/action_def_style</item>
+    </style>
+
+    <style name="action_def_style" parent="android:Widget.ActionBar">
+        <item name="android:background">#082f5e</item>
+        <item name="android:titleTextStyle">@style/action_bar_title_style</item>
+    </style>
+
+    <style name="action_bar_title_style" parent="android:Widget.ActionBar.TabText">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+
+    <style name="Transparent" parent="AppTheme">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:title">搜索</item>
+    </style>
+
+    <style name="dialog_activity_style" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:dialogLayout">@layout/activity_add_user</item>
+    </style>
+
+    <style name="custom_checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_bg</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:maxHeight">10dp</item>
+    </style>
+
+    <style name="custom_radio" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/radio_button_bg</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+</resources>

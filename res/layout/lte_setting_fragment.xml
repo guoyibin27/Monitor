@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/content_bg"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                tools:context="com.zte.monitor.app.activity.SettingsActivity">
+
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="保存"
+            android:layout_alignParentBottom="true"
+            android:textColor="#ffffff"
+            android:id="@+id/save"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:layout_marginBottom="10dp"/>
+
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+                android:scrollbars="none" android:overScrollMode="never"
+                android:fadingEdge="none" android:layout_above="@id/save">
+
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_marginTop="10dp">
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textSize="12sp" android:text="运营商" android:layout_marginLeft="10dp"
+                      android:textColor="#ffffff"
+                      android:layout_marginBottom="4dp"/>
+            <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+                     android:id="@+id/sp_operator"
+                     android:paddingLeft="10dp"
+                     android:paddingTop="16dp"
+                     android:paddingBottom="16dp"
+                     android:background="@drawable/spinner_bg_drawable"/>
+
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp">
+
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textSize="12sp" android:layout_marginLeft="10dp"
+                          android:text="基站频点"
+                          android:layout_toLeftOf="@id/button_get_station_frequency_transparent"
+                          android:layout_marginTop="10dp"
+                          android:textColor="#ffffff"
+                          android:id="@+id/station_frequency_label"
+                          android:layout_marginBottom="4dp"/>
+
+                <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:id="@+id/station_frequency"
+                          android:layout_below="@id/station_frequency_label"
+                          android:layout_toLeftOf="@id/button_get_station_frequency_transparent"
+                          android:inputType="number"
+                          android:paddingTop="16dp"
+                          android:paddingBottom="16dp"
+                          android:textColor="#ffffff"
+                          android:paddingLeft="20dp"
+                          android:background="@drawable/list_item_bg"/>
+
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:layout_toLeftOf="@id/button_get_station_frequency_transparent"
+                              android:layout_below="@id/station_frequency"
+                              android:layout_marginTop="10dp"
+                              android:id="@+id/n_frequency_layout"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:textSize="12sp" android:layout_marginLeft="10dp"
+                              android:textColor="#ffffff"
+                              android:text="临区频点" android:layout_marginBottom="4dp"/>
+
+                    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:id="@+id/frequency_edt"
+                              android:inputType="number"
+                              android:layout_marginTop="2dp"
+                              android:paddingTop="16dp"
+                              android:textColor="#ffffff"
+                              android:paddingBottom="16dp"
+                              android:paddingLeft="20dp"
+                              android:background="@drawable/list_item_bg"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textSize="12sp" android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:textColor="#ffffff"
+                      android:text="PCI"
+                      android:layout_marginBottom="4dp"/>
+            <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:inputType="number"
+                      android:id="@+id/monitor_line_count_cmcc"
+                      android:layout_marginTop="2dp"
+                      android:paddingTop="16dp"
+                      android:textColor="#ffffff"
+                      android:paddingBottom="16dp"
+                      android:paddingLeft="20dp"
+                      android:background="@drawable/list_item_bg"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

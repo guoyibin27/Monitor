@@ -1,0 +1,413 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/content_bg"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                tools:context="com.zte.monitor.app.activity.EquipmentStateActivity">
+
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/change_to_collect_station"
+            android:background="@drawable/button_bg"
+            android:textColor="#ffffff"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="切换采集站"/>
+
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+                android:scrollbars="none" android:overScrollMode="never" android:fadingEdge="none"
+                android:layout_above="@id/change_to_collect_station">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                      android:orientation="vertical">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:paddingRight="20dp"
+                            android:paddingLeft="20dp"
+                            android:background="@drawable/list_item_bg">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="客户端链接状态" android:layout_alignParentLeft="true"
+                          android:textColor="#ffffff"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/conn_state_text_view"
+                          android:textColor="#ffffff"
+                          android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="10dp"
+                          android:id="@+id/gsm_layout">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:id="@+id/gsm_pause_station"
+                            android:background="@drawable/button_bg"
+                            android:layout_alignParentRight="true"
+                            android:textColor="#ffffff"
+                            android:text="暂停"/>
+                    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:text="GSM" android:layout_toLeftOf="@id/gsm_pause_station"
+                              android:layout_alignTop="@id/gsm_pause_station"
+                              android:gravity="center_vertical"
+                              android:layout_marginLeft="10dp"
+                              android:textColor="#ffffff"
+                              android:layout_alignBottom="@id/gsm_pause_station"/>
+                </RelativeLayout>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="1dp"
+                                android:paddingTop="16dp"
+                                android:paddingBottom="16dp"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="基站链路状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"
+                            />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_alignParentRight="true"
+                              android:textColor="#ffffff"
+                              android:id="@+id/gsm_bts_state_text_view"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="1dp"
+                                android:paddingTop="16dp"
+                                android:paddingBottom="16dp"
+                                android:paddingRight="20dp"
+                                android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="监听模块状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/gsm_proxy_state_image"
+                               android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="1dp"
+                                android:paddingTop="16dp"
+                                android:paddingBottom="16dp"
+                                android:paddingRight="20dp"
+                                android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="获取号码模块状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/gsm_get_phone_num_state_image"
+                               android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <!--<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_marginTop="1dp"-->
+                                <!--android:paddingTop="16dp"-->
+                                <!--android:paddingBottom="16dp"-->
+                                <!--android:paddingRight="20dp"-->
+                                <!--android:paddingLeft="20dp"-->
+                                <!--android:background="@drawable/list_item_bg">-->
+                    <!--<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+                              <!--android:text="GPS状态" android:layout_alignParentLeft="true"-->
+                              <!--android:textColor="#ffffff"/>-->
+                    <!--<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+                              <!--android:id="@+id/gsm_gps_state_text_view"-->
+                              <!--android:textColor="#ffffff"-->
+                              <!--android:layout_alignParentRight="true"/>-->
+                <!--</RelativeLayout>-->
+
+                <!--<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_marginTop="1dp"-->
+                                <!--android:paddingTop="16dp"-->
+                                <!--android:paddingBottom="16dp"-->
+                                <!--android:paddingRight="20dp"-->
+                                <!--android:paddingLeft="20dp"-->
+                                <!--android:background="@drawable/list_item_bg">-->
+                    <!--<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+                              <!--android:text="系统模式" android:layout_alignParentLeft="true"-->
+                              <!--android:textColor="#ffffff"/>-->
+                    <!--<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+                              <!--android:id="@+id/gsm_sys_mode_text_view"-->
+                              <!--android:textColor="#ffffff"-->
+                              <!--android:layout_alignParentRight="true"/>-->
+                <!--</RelativeLayout>-->
+            </LinearLayout>
+
+            <!-- CDMA -->
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="20dp"
+                          android:id="@+id/cdma_layout">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:id="@+id/cdma_pause_station"
+                            android:background="@drawable/button_bg"
+                            android:layout_alignParentRight="true"
+                            android:textColor="#ffffff"
+                            android:text="暂停"/>
+                    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:text="CDMA" android:layout_toLeftOf="@id/cdma_pause_station"
+                              android:layout_alignTop="@id/cdma_pause_station"
+                              android:textColor="#ffffff"
+                              android:gravity="bottom"
+                              android:layout_marginLeft="10dp"
+                              android:layout_alignBottom="@id/cdma_pause_station"/>
+                </RelativeLayout>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textColor="#ffffff"
+                              android:text="基站链路状态" android:layout_alignParentLeft="true"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_alignParentRight="true"
+                              android:textColor="#ffffff"
+                              android:id="@+id/cdma_bts_state_text_view"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="1dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="监听模块状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/cdma_proxy_state_image"
+                               android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--  WCDMA  -->
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="20dp"
+                          android:id="@+id/wcdma_layout">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:id="@+id/wcdma_pause_station"
+                            android:background="@drawable/button_bg"
+                            android:layout_alignParentRight="true"
+                            android:textColor="#ffffff"
+                            android:text="暂停"/>
+                    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:text="WCDMA" android:layout_toLeftOf="@id/wcdma_pause_station"
+                              android:layout_alignTop="@id/wcdma_pause_station"
+                              android:gravity="bottom"
+                              android:textColor="#ffffff"
+                              android:layout_marginLeft="10dp"
+                              android:layout_alignBottom="@id/wcdma_pause_station"/>
+                </RelativeLayout>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="基站链路状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_alignParentRight="true"
+                              android:textColor="#ffffff"
+                              android:id="@+id/wcdma_bts_state_text_view"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="1dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="监听模块状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/wcdma_proxy_state_image"
+                               android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--  TD  -->
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="20dp"
+                          android:id="@+id/td_layout">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:id="@+id/td_pause_station"
+                            android:background="@drawable/button_bg"
+                            android:layout_alignParentRight="true"
+                            android:textColor="#ffffff"
+                            android:text="暂停"/>
+                    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:text="TD" android:layout_toLeftOf="@id/td_pause_station"
+                              android:layout_alignTop="@id/td_pause_station"
+                              android:gravity="bottom"
+                              android:textColor="#ffffff"
+                              android:layout_marginLeft="10dp"
+                              android:layout_alignBottom="@id/td_pause_station"/>
+                </RelativeLayout>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="基站链路状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_alignParentRight="true"
+                              android:textColor="#ffffff"
+                              android:id="@+id/td_bts_state_text_view"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="1dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="监听模块状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/td_proxy_state_image"
+                               android:textColor="#ffffff"
+                               android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--  LTE  -->
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="20dp"
+                          android:id="@+id/lte_layout">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:id="@+id/lte_pause_station"
+                            android:background="@drawable/button_bg"
+                            android:layout_alignParentRight="true"
+                            android:textColor="#ffffff"
+                            android:text="暂停"/>
+                    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:text="LTE" android:layout_toLeftOf="@id/lte_pause_station"
+                              android:layout_alignTop="@id/lte_pause_station"
+                              android:gravity="bottom"
+                              android:textColor="#ffffff"
+                              android:layout_marginLeft="10dp"
+                              android:layout_alignBottom="@id/lte_pause_station"/>
+                </RelativeLayout>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="基站链路状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_alignParentRight="true"
+                              android:textColor="#ffffff"
+                              android:id="@+id/lte_bts_state_text_view"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="1dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="监听模块状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/lte_proxy_state_image"
+                               android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--  WIFI  -->
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="20dp"
+                          android:id="@+id/wifi_layout">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:id="@+id/wifi_pause_station"
+                            android:background="@drawable/button_bg"
+                            android:layout_alignParentRight="true"
+                            android:textColor="#ffffff"
+                            android:text="暂停"/>
+                    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:text="WIFI" android:layout_toLeftOf="@id/wifi_pause_station"
+                              android:layout_alignTop="@id/wifi_pause_station"
+                              android:gravity="bottom"
+                              android:textColor="#ffffff"
+                              android:layout_marginLeft="10dp"
+                              android:layout_alignBottom="@id/wifi_pause_station"/>
+                </RelativeLayout>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="基站链路状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_alignParentRight="true"
+                              android:textColor="#ffffff"
+                              android:id="@+id/wifi_bts_state_text_view"/>
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="1dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="16dp" android:paddingBottom="16dp" android:paddingLeft="20dp"
+                                android:background="@drawable/list_item_bg">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="监听模块状态" android:layout_alignParentLeft="true"
+                              android:textColor="#ffffff"/>
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/wifi_proxy_state_image"
+                               android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/content_bg"
+              tools:context="com.zte.monitor.app.activity.MainActivity">
+    <!--<com.zte.monitor.app.activity.widget.PagerSlidingTab-->
+    <!--xmlns:pst="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/tabs"-->
+    <!--android:layout_width="match_parent"-->
+    <!--pst:pstShouldExpand="true"-->
+    <!--pst:pstIndicatorColor="#2cb6e1"-->
+    <!--pst:pstIndicatorHeight="2dp"-->
+    <!--pst:pstSelectedTextColor="#2cb6e1"-->
+    <!--android:layout_height="48dip"/>-->
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginRight="20dp"
+                  android:layout_marginBottom="10dp">
+
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/blackListButton"
+                android:text="黑白名单"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:background="@drawable/btn_left_pressed"/>
+        <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/unknownListButton"
+                android:background="@drawable/btn_right_normal"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:text="未知用户"/>
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+            android:layout_width="fill_parent" android:layout_height="fill_parent"
+            android:id="@+id/view_pager"/>
+</LinearLayout>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.zte.monitor.app">
+
+    <uses-sdk android:minSdkVersion="14"/>
+
+    <supports-screens
+            android:anyDensity="true"
+            android:largeScreens="true"
+            android:normalScreens="true"
+            android:smallScreens="true"
+            android:xlargeScreens="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+            android:allowBackup="true"
+            android:largeHeap="true"
+            android:icon="@drawable/logo"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            android:name=".MonitorApplication">
+
+        <activity
+                android:name=".activity.LoginActivity" android:noHistory="true"
+                android:windowSoftInputMode="adjustPan"
+                android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".activity.MainActivity"
+                android:label="@string/title_activity_main"
+                android:icon="@drawable/icon_user"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden|stateHidden"/>
+        <activity
+                android:name=".activity.UserDetailActivity"
+                android:screenOrientation="portrait"
+                android:icon="@drawable/icon_user"
+                android:label="@string/title_activity_user_detail"/>
+
+        <activity
+                android:name=".activity.AddUserActivity"
+                android:label="@string/title_activity_add_user"
+                android:icon="@drawable/icon_user"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan"/>
+
+        <activity
+                android:name=".activity.SmsListActivity"
+                android:screenOrientation="portrait"
+                android:icon="@drawable/message"
+                android:label="@string/title_activity_sms_list"/>
+
+        <activity
+                android:name=".activity.EquipmentStateActivity"
+                android:screenOrientation="portrait"
+                android:icon="@drawable/equipment_state"
+                android:label="@string/title_activity_equipment_state"/>
+
+        <activity
+                android:name=".activity.SearchSmsActivity"
+                android:label="@string/title_activity_search"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustResize"
+                android:icon="@drawable/message"/>
+
+        <activity android:name=".activity.SettingsActivity"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:icon="@drawable/setting"
+                  android:screenOrientation="portrait"
+                  android:label="@string/title_activity_settings"/>
+
+        <activity android:name=".activity.SearchUserActivity"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:theme="@style/dialog_activity_style"
+                  android:screenOrientation="portrait"
+                  android:label="用户搜索"/>
+
+        <activity android:name=".activity.SearchUserResultActivity"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:screenOrientation="portrait"
+                  android:icon="@drawable/icon_user"
+                  android:label="搜索结果"/>
+
+        <activity android:name=".activity.PlayPcmActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:icon="@drawable/shishiyuyin"
+                  android:label="监听播放"/>
+
+        <activity android:name=".activity.SmsDetailActivity"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:screenOrientation="portrait"
+                  android:icon="@drawable/message"
+                  android:label="短信详情"/>
+
+        <activity android:name=".activity.SensitivePhoneNumberActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:icon="@drawable/add_mingan_haoma"
+                  android:label="敏感号码管理"/>
+
+        <activity android:name=".activity.SensitiveWordActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:icon="@drawable/add_mingan"
+                  android:label="敏感词汇管理"/>
+
+        <activity android:name=".activity.ScanFrequencyResultActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:icon="@drawable/check_power"
+                  android:label="临频点列表"/>
+
+        <activity android:name=".activity.AddSensitiveWordActivity"
+                  android:theme="@style/dialog_activity_style"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="添加敏感词"/>
+
+        <activity android:name=".activity.AddSensitiveNumberActivity"
+                  android:theme="@style/dialog_activity_style"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="添加敏感号码"/>
+
+        <activity android:name=".activity.UserDetailAndEditActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="查看编辑用户信息"/>
+
+        <activity android:name=".activity.SearchBaseInfoActivity"
+                  android:theme="@style/dialog_activity_style"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="查询基本用户信息"/>
+
+        <activity android:name=".activity.SearchSpcInfoActivity"
+                  android:theme="@style/dialog_activity_style"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="查询特殊用户信息"/>
+
+        <activity android:name=".activity.SearchedUserListActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="用户列表"/>
+
+
+        <service
+                android:name=".udp.UdpDataSendService"
+                android:label="Udp Data Send Service"
+                android:enabled="true"
+                android:exported="true"/>
+    </application>
+
+
+</manifest>

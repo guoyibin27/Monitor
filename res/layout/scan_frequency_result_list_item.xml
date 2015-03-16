@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                    android:background="@drawable/list_item_bg"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginRight="10dp"
+                      android:id="@+id/top_layout"
+                      android:layout_alignParentTop="true">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="C1:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:id="@+id/c1_text_view"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="C2:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:id="@+id/c2_text_view"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="Rxlev:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:id="@+id/rxlev_text_view"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="4dp"
+                      android:layout_marginRight="10dp"
+                      android:layout_marginBottom="10dp"
+                      android:layout_below="@id/top_layout">
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="BSIC:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:id="@+id/bsic_text_view"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="NCell:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:id="@+id/ncell_text_view"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="NLac:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:id="@+id/nlac_text_view"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:text="NCellId:"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="#ffffff"
+                          android:id="@+id/ncell_id_text_view"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                     android:layout_alignParentRight="true"
+                     android:layout_centerVertical="true"
+                     android:textColor="#ffffff"
+                     android:focusable="false"
+                     android:clickable="false"
+                     style="@style/custom_radio"
+                     android:id="@+id/check_radio_button"/>
+    </RelativeLayout>
+</RelativeLayout>

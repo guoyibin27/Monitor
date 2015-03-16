@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+             android:id="@+id/sms_center_spinner"
+             android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
+            />
+
+    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+              android:hint="伪装号码"
+              android:id="@+id/edt_phone_number"
+              android:maxLength="11"
+              android:inputType="number"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:layout_marginTop="10dp"
+            />
+
+    <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/remember_number"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:layout_marginTop="10dp"
+              android:text="记住伪装号码"/>
+
+    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+              android:id="@+id/sms_content"
+              android:layout_marginTop="10dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:hint="短信内容"/>
+</LinearLayout>

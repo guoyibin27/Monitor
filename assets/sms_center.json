@@ -1,0 +1,268 @@
+[
+    {
+        "center_name": "北京移动",
+        "center_no": "13800100500"
+    },
+    {
+        "center_name": "北京联通",
+        "center_no": "13010112500"
+    },
+
+    {
+        "center_name": "上海移动",
+        "center_no": "13800210500"
+    },
+    {
+        "center_name": "上海联通",
+        "center_no": "13010314500"
+    },
+
+    {
+        "center_name": "山东移动",
+        "center_no": "13800531500"
+    },
+    {
+        "center_name": "山东联通",
+        "center_no": "13010171500"
+    },
+
+    {
+        "center_name": "江苏移动",
+        "center_no": "13800250500"
+    },
+    {
+        "center_name": "江苏联通",
+        "center_no": "13010341500"
+    },
+
+    {
+        "center_name": "浙江移动",
+        "center_no": "13800571500"
+    },
+    {
+        "center_name": "浙江联通",
+        "center_no": "13010360500"
+    },
+
+    {
+        "center_name": "福建移动",
+        "center_no": "13800591500"
+    },
+    {
+        "center_name": "福建联通",
+        "center_no": "13010380500"
+    },
+
+    {
+        "center_name": "四川移动",
+        "center_no": "13800280500"
+    },
+    {
+        "center_name": "四川联通",
+        "center_no": "13010811500"
+    },
+
+    {
+        "center_name": "重庆移动",
+        "center_no": "13800230500"
+    },
+    {
+        "center_name": "重庆联通",
+        "center_no": "13010831500"
+    },
+
+    {
+        "center_name": "海南移动",
+        "center_no": "13800898500"
+    },
+    {
+        "center_name": "海南联通",
+        "center_no": "13010501500"
+    },
+
+    {
+        "center_name": "黑龙江移动",
+        "center_no": "13800451500"
+    },
+    {
+        "center_name": "黑龙江联通",
+        "center_no": "13010980500"
+    },
+
+
+    {
+        "center_name": "吉林移动",
+        "center_no": "13800431500"
+    },
+    {
+        "center_name": "吉林联通",
+        "center_no": "13010911500"
+    },
+
+    {
+        "center_name": "天津移动",
+        "center_no": "13800220500"
+    },
+    {
+        "center_name": "天津联通",
+        "center_no": "13010130500"
+    },
+
+    {
+        "center_name": "河北移动",
+        "center_no": "13800311500"
+    },
+    {
+        "center_name": "河北联通",
+        "center_no": "13010180500"
+    },
+
+    {
+        "center_name": "内蒙古移动",
+        "center_no": "13800471500"
+    },
+    {
+        "center_name": "内蒙古联通",
+        "center_no": "13010950500"
+    },
+
+    {
+        "center_name": "山西移动",
+        "center_no": "13800351500"
+    },
+    {
+        "center_name": "山西联通",
+        "center_no": "13010701500"
+    },
+
+    {
+        "center_name": "陕西移动",
+        "center_no": "13800290500"
+    },
+    {
+        "center_name": "陕西联通",
+        "center_no": "13010851500"
+    },
+
+
+    {
+        "center_name": "安徽移动",
+        "center_no": "13800551500"
+    },
+    {
+        "center_name": "安徽联通",
+        "center_no": "13010305500"
+    },
+    {
+        "center_name": "新疆移动",
+        "center_no": "13800471500"
+    },
+    {
+        "center_name": "新疆联通",
+        "center_no": "13010969500"
+    },
+    {
+        "center_name": "青海移动",
+        "center_no": "13800971500"
+    },
+    {
+        "center_name": "青海联通",
+        "center_no": "13010776500"
+    },
+    {
+        "center_name": "甘肃移动",
+        "center_no": "13800931500"
+    },
+    {
+        "center_name": "甘肃联通",
+        "center_no": "13010879500"
+    },
+    {
+        "center_name": "宁夏移动",
+        "center_no": "13800951500"
+    },
+    {
+        "center_name": "宁夏联通",
+        "center_no": "13010796500"
+    },
+    {
+        "center_name": "贵州移动",
+        "center_no": "13800851500"
+    },
+    {
+        "center_name": "贵州联通",
+        "center_no": "13010788500"
+    },
+    {
+        "center_name": "云南移动",
+        "center_no": "13800871500"
+    },
+    {
+        "center_name": "云南联通",
+        "center_no": "13010868500"
+    },
+    {
+        "center_name": "湖南移动",
+        "center_no": "13800731500"
+    },
+    {
+        "center_name": "湖南联通",
+        "center_no": "13010731500"
+    },
+    {
+        "center_name": "湖北移动",
+        "center_no": "13800270500"
+    },
+    {
+        "center_name": "湖北联通",
+        "center_no": "13010710500"
+    },
+    {
+        "center_name": "广东移动",
+        "center_no": "13800200500"
+    },
+    {
+        "center_name": "广东联通",
+        "center_no": "13010200500"
+    },
+    {
+        "center_name": "广西移动",
+        "center_no": "13800771500"
+    },
+    {
+        "center_name": "广西联通",
+        "center_no": "13010591500"
+    },
+    {
+        "center_name": "河南移动",
+        "center_no": "13800371500"
+    },
+    {
+        "center_name": "河南联通",
+        "center_no": "13010761500"
+    },
+    {
+        "center_name": "江西移动",
+        "center_no": "13800791500"
+    },
+    {
+        "center_name": "江西联通",
+        "center_no": "13010720500"
+    },
+    {
+        "center_name": "辽宁移动",
+        "center_no": "13800240500"
+    },
+    {
+        "center_name": "辽宁联通",
+        "center_no": "13010240500"
+    },
+    {
+        "center_name": "西藏移动",
+        "center_no": "13800891500"
+    },
+    {
+        "center_name": "西藏联通",
+        "center_no": "13010891500"
+    }
+]
