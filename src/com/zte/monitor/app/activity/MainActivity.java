@@ -18,6 +18,7 @@ import com.zte.monitor.app.adapter.MainPagerAdapter;
 import com.zte.monitor.app.codec.CodecManager;
 import com.zte.monitor.app.database.SQLiteManager;
 import com.zte.monitor.app.database.dao.*;
+import com.zte.monitor.app.pcm.PlayService;
 import com.zte.monitor.app.udp.UdpDataSendService;
 import com.zte.monitor.app.udp.aidl.IUdpConnectionInterface;
 import com.zte.monitor.app.util.NotificationUtils;
@@ -111,6 +112,7 @@ public class MainActivity extends BaseActivity {
 //        createProxyPhoneNumberDialog();
         Intent intent = new Intent(this, UdpDataSendService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        startService(new Intent(this, PlayService.class));
     }
 
     private void createWorkModeView() {
@@ -218,6 +220,7 @@ public class MainActivity extends BaseActivity {
 //            settingDao.clear();
             unbindService(connection);
             stopService(new Intent(MainActivity.this, UdpDataSendService.class));
+            stopService(new Intent(MainActivity.this, PlayService.class));
             SQLiteManager.getInstance(MainActivity.this).release();
             TextToSpeechManager.getManager(getApplicationContext()).release();
             NotificationUtils.getInstance(getApplicationContext()).cancelCustomNotification();

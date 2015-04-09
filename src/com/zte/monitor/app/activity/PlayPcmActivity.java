@@ -1,9 +1,9 @@
 package com.zte.monitor.app.activity;
 
-import android.app.AlertDialog;
 import android.content.*;
-import android.media.AudioFormat;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -11,17 +11,19 @@ import android.widget.ListView;
 import com.zte.monitor.app.MonitorApplication;
 import com.zte.monitor.app.R;
 import com.zte.monitor.app.adapter.PlayPcmAdapter;
+import com.zte.monitor.app.codec.CodecManager;
 import com.zte.monitor.app.database.dao.MonitorLineDao;
-import com.zte.monitor.app.handler.MessageResponseHandler;
-import com.zte.monitor.app.handler.MonitorPcmResponseHandler;
 import com.zte.monitor.app.handler.MonitorResponseHandler;
 import com.zte.monitor.app.model.MonitorLineModel;
-import com.zte.monitor.app.model.response.MonitorPcmResponse;
-import com.zte.monitor.app.pcm.PcmAudioParam;
-import com.zte.monitor.app.pcm.PcmPlayer;
+import com.zte.monitor.app.model.UserModel;
+import com.zte.monitor.app.model.response.MonitorResponse;
+import com.zte.monitor.app.pcm.PlayService;
+import com.zte.monitor.app.udp.aidl.IUdpConnectionInterface;
+import com.zte.monitor.app.util.DialogUtils;
 import com.zte.monitor.app.util.ToastUtils;
+import org.apache.mina.core.buffer.IoBuffer;
 
-import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,9 +39,23 @@ public class PlayPcmActivity extends BaseActivity {
     private ListView listView;
     private MonitorLineDao monitorLineDao;
     private PlayPcmAdapter adapter;
-    private PcmAudioParam audioParam;
-    private PcmPlayer pcmPlayer;
     private MonitorLineModel selectedModel;
+    private int startMonitor = 10001;
+    private int stopMonitor = 10002;
+    private IUdpConnectionInterface anInterface;
+
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            anInterface = IUdpConnectionInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            anInterface = null;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +73,29 @@ public class PlayPcmActivity extends BaseActivity {
                 selectedModel = (MonitorLineModel) adapterView.getItemAtPosition(i);
                 for (int j = 0; j < adapter.getData().size(); j++) {
                     MonitorLineModel monitorLineModel = adapter.getData().get(j);
-                    if (i == j) {
-                        selectedModel.isChecked = true;
-                    } else {
-                        monitorLineModel.isChecked = false;
-                    }
+                    monitorLineModel.isChecked = false;
                 }
+
+                Intent intent = new Intent(PlayPcmActivity.this, PlayService.class);
+                if (selectedModel.isChecked) {
+                    MonitorApplication.playImsi = "";
+                    selectedModel.isChecked = false;
+                    intent.putExtra(PlayService.PLAY_STATUS, PlayService.PlayStatus.stop);
+                } else {
+                    MonitorApplication.playImsi = selectedModel.imsi;
+                    selectedModel.isChecked = true;
+                    intent.putExtra(PlayService.PLAY_STATUS, PlayService.PlayStatus.play);
+                }
+
+                if (selectedModel.imsi.equals(MonitorApplication.playImsi)) {
+                    playButton.setText("停止监听");
+                    MonitorApplication.playerStatus = PlayService.PlayStatus.stop;
+                } else {
+                    playButton.setText("监听");
+                    MonitorApplication.playerStatus = PlayService.PlayStatus.play;
+                }
+
+                startService(intent);
                 adapter.notifyDataSetInvalidated();
             }
         });
@@ -74,106 +107,83 @@ public class PlayPcmActivity extends BaseActivity {
                     ToastUtils.show(PlayPcmActivity.this, "请选择监听");
                     return;
                 }
-                MonitorApplication.currentPlayMonitorPcmImsi = selectedModel.imsi;
-                showPlayDialog(selectedModel.imsi);
+                DialogUtils.showProgressDialog(PlayPcmActivity.this, "正在发送请求,请稍等...");
+                if (MonitorApplication.playerStatus == PlayService.PlayStatus.play) {
+                    MonitorApplication.currentPlayMonitorPcmImsi = selectedModel.imsi;
+                    List<UserModel> userModelList = new ArrayList<UserModel>();
+                    UserModel userModel = new UserModel();
+                    userModel.imsi = selectedModel.imsi;
+                    userModel.imei = selectedModel.imei;
+                    userModelList.add(userModel);
+                    IoBuffer buffer = CodecManager.getManager().monitorReqEncode((byte) 0, userModelList);
+                    buffer.flip();
+                    byte[] playListReq = new byte[buffer.limit()];
+                    buffer.get(playListReq);
+                    try {
+                        anInterface.sendRequest(playListReq);
+                        startLoadingTimer(startMonitor);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                        removeTimer(startMonitor);
+                        DialogUtils.dismissProgressDialog();
+                        ToastUtils.show(PlayPcmActivity.this, "请求发送失败");
+                    }
+                } else if (MonitorApplication.playerStatus == PlayService.PlayStatus.stop) {
+                    MonitorApplication.currentPlayMonitorPcmImsi = "";
+                    List<UserModel> userModelList = new ArrayList<UserModel>();
+                    UserModel userModel = new UserModel();
+                    userModel.imsi = selectedModel.imsi;
+                    userModel.imei = selectedModel.imei;
+                    userModelList.add(userModel);
+                    IoBuffer buffer = CodecManager.getManager().monitorReqEncode((byte) 1, userModelList);
+                    buffer.flip();
+                    byte[] playListReq = new byte[buffer.limit()];
+                    buffer.get(playListReq);
+                    try {
+                        anInterface.sendRequest(playListReq);
+                        startLoadingTimer(stopMonitor);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                        removeTimer(stopMonitor);
+                        DialogUtils.dismissProgressDialog();
+                        ToastUtils.show(PlayPcmActivity.this, "请求发送失败");
+                    }
+                }
+
             }
         });
-        initPcmPlayer();
         IntentFilter filter = new IntentFilter();
         filter.addAction(MonitorResponseHandler.MONITOR_SUCCESS);
-        filter.addAction(MonitorPcmResponseHandler.MONITOR_PCM_SUCCESS);
-        filter.addAction(MonitorResponseHandler.MONITOR_SUCCESS);
+        filter.addAction(MonitorResponseHandler.MONITOR_FAILED);
         registerReceiver(receiver, filter);
-    }
-
-    private void initPcmPlayer() {
-        audioParam = new PcmAudioParam();
-        audioParam.mFrequency = 8000;
-        audioParam.mChannel = AudioFormat.CHANNEL_CONFIGURATION_MONO;
-        audioParam.mSampBit = AudioFormat.ENCODING_PCM_16BIT;
-        pcmPlayer = new PcmPlayer(audioParam);
-        pcmPlayer.prepare();
     }
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
+            DialogUtils.dismissProgressDialog();
             if (action.equals(MonitorResponseHandler.MONITOR_SUCCESS)) {
-                loadData();
-            } else if (action.equals(MonitorPcmResponseHandler.MONITOR_PCM_SUCCESS)) {
-                MonitorPcmResponse response = (MonitorPcmResponse) intent.getSerializableExtra(MonitorPcmResponseHandler.MONITOR_PCM_DATA);
-                pcmPlayer.setPcmData(response.pcm);
+                removeTimer(startMonitor);
+                MonitorResponse response = (MonitorResponse) intent.getSerializableExtra(MonitorResponseHandler.MONITOR_DATA);
+                if (response.entryList.size() > 0) {
+                    MonitorResponse.Entry entry = response.entryList.get(0);
+                    MonitorApplication.currentPlayMonitorPcmImsi = entry.userModel.imsi;
+                    ToastUtils.show(context, "监听成功!");
+                } else {
+                    ToastUtils.show(context, "监听失败,服务端发生错误!");
+                }
+            } else if (action.equals(MonitorResponseHandler.MONITOR_FAILED)) {
+                ToastUtils.show(context, "监听失败!");
+                removeTimer(stopMonitor);
             }
         }
     };
 
-    private void showPlayDialog(String imsi) {
-        final AlertDialog playDialog = new AlertDialog.Builder(PlayPcmActivity.this).setMessage("播放 " + imsi).create();
-        playDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "播放", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                try {
-                    Field field = dialogInterface.getClass().getSuperclass().getDeclaredField("mShowing");
-                    field.setAccessible(true);
-                    field.set(dialogInterface, false);
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-                sendBroadcast(new Intent(MessageResponseHandler.ACTION_STOP_SPEAKING));
-                pcmPlayer.play();
-                Button playButton = playDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                Button stopButton = playDialog.getButton(DialogInterface.BUTTON_NEUTRAL);
-                playButton.setEnabled(false);
-                stopButton.setEnabled(true);
-                playButton.invalidate();
-                stopButton.invalidate();
-            }
-        });
-        playDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "停止", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                try {
-                    Field field = dialogInterface.getClass().getSuperclass().getDeclaredField("mShowing");
-                    field.setAccessible(true);
-                    field.set(dialogInterface, false);
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-                MonitorApplication.currentPlayMonitorPcmImsi = "";
-                pcmPlayer.stop();
-                Button playButton = playDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                Button stopButton = playDialog.getButton(DialogInterface.BUTTON_NEUTRAL);
-                playButton.setEnabled(true);
-                stopButton.setEnabled(false);
-                playButton.invalidate();
-                stopButton.invalidate();
-            }
-        });
-        playDialog.setButton(DialogInterface.BUTTON_POSITIVE, "关闭", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                try {
-                    Field field = dialogInterface.getClass().getSuperclass().getDeclaredField("mShowing");
-                    field.setAccessible(true);
-                    field.set(dialogInterface, true);
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-                sendBroadcast(new Intent(MessageResponseHandler.ACTION_START_SPEAKING));
-                MonitorApplication.currentPlayMonitorPcmImsi = "";
-                dialogInterface.dismiss();
-            }
-        });
-        playDialog.setCancelable(false);
-        playDialog.setCanceledOnTouchOutside(false);
-        playDialog.show();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
     }
 
     @Override
@@ -186,18 +196,13 @@ public class PlayPcmActivity extends BaseActivity {
         adapter.getData().clear();
         List<MonitorLineModel> monitorLineModelList = monitorLineDao.getList();
         adapter.getData().addAll(monitorLineModelList);
-        adapter.notifyDataSetInvalidated();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(receiver);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        pcmPlayer.release();
+        removeTimer(stopMonitor);
+        removeTimer(startMonitor);
     }
 }

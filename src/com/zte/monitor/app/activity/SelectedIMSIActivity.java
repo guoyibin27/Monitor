@@ -88,6 +88,11 @@ public class SelectedIMSIActivity extends BaseActivity {
                 UserModel userModel = (UserModel) adapterView.getItemAtPosition(i);
                 userModel.isChecked = !userModel.isChecked;
                 adapter.notifyDataSetChanged();
+                if (userModel.isChecked) {
+                    userList.add(userModel);
+                } else {
+                    userList.remove(userModel);
+                }
             }
         });
     }

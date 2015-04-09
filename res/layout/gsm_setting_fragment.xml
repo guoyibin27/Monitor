@@ -90,7 +90,6 @@
                         android:textSize="12sp"
                         android:id="@+id/button_get_station_frequency"
                         android:layout_alignParentRight="true"
-                        android:layout_alignBottom="@id/n_frequency_layout"
                         android:layout_alignTop="@id/station_frequency"
                         android:layout_marginRight="2dp"
                         android:layout_marginLeft="2dp"

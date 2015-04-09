@@ -15,6 +15,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_alignParentBottom="true"/>
+
     <ListView android:layout_width="fill_parent" android:layout_height="fill_parent"
               android:overScrollMode="never"
               android:id="@+id/list_view"
@@ -22,5 +23,5 @@
               android:layout_alignParentTop="true"
               android:dividerHeight="10dp"
               android:divider="@android:color/transparent"
-              android:layout_above="@id/play_button"/>
+            />
 </RelativeLayout>

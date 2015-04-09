@@ -75,5 +75,13 @@ public class SystemMenuActionProvider extends ActionProvider {
                 return true;
             }
         });
+        subMenu.add(0, 6, 6, R.string.action_sms_group_send).setIcon(R.drawable.send_message).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                mContext.startActivity(new Intent(mContext, GroupSmsSendActivity.class));
+                return true;
+            }
+        });
+
     }
 }

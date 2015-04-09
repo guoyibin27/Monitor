@@ -154,10 +154,21 @@
                   android:windowSoftInputMode="stateHidden|adjustResize"
                   android:label="用户列表"/>
 
+        <activity android:name=".activity.GroupSmsSendActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="短信群发"/>
+
 
         <service
                 android:name=".udp.UdpDataSendService"
                 android:label="Udp Data Send Service"
+                android:enabled="true"
+                android:exported="true"/>
+
+        <service
+                android:name=".pcm.PlayService"
+                android:label="Pcm Player"
                 android:enabled="true"
                 android:exported="true"/>
     </application>

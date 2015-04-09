@@ -49,7 +49,7 @@
                           android:layout_marginLeft="10dp"/>
             </LinearLayout>
         </LinearLayout>
-        <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
                      android:layout_alignParentRight="true"
                      android:id="@+id/radio_button"
                      android:focusable="false"

@@ -518,16 +518,21 @@ public class CodecManager {
                 byte num = buffer.get();
                 for (int i = 0; i < num; i++) {
                     MonitorResponse.Entry entry = new MonitorResponse.Entry();
-                    UserModel userModel = new UserModel();
+                    entry.userModel = new UserModel();
                     try {
-                        userModel.imsi = buffer.getString(buffer.get(), decoder);
-                        userModel.username = buffer.getString(buffer.get(), decoder);
-                        userModel.imei = buffer.getString(buffer.get(), decoder);
-                        entry.userModel = userModel;
+                        entry.userModel.imsi = buffer.getString(buffer.get(), decoder);
+                        byte nameLen = buffer.get();
+                        if (((byte) 0) != nameLen) {
+                            entry.userModel.username = buffer.getString(nameLen, decoder);
+                        }
+                        byte imeiLen = buffer.get();
+                        if (((byte) 0) != imeiLen) {
+                            entry.userModel.imei = buffer.getString(buffer.get(), decoder);
+                        }
+                        entry.channelNo = buffer.get();
                     } catch (CharacterCodingException e) {
                         e.printStackTrace();
                     }
-                    entry.channelNo = buffer.get();
                     response.entryList.add(entry);
                 }
             }
@@ -1391,30 +1396,31 @@ public class CodecManager {
             response.state = buffer.get();
             if (response.state != 0) {
                 response.cause = buffer.get();
-            }
-            response.userModel = new UserModel();
-            try {
-                response.userModel.imsi = buffer.getString(buffer.get(), decoder);
-                response.userModel.imei = buffer.getString(buffer.get(), decoder);
-                byte phLen = buffer.get();
-                if (((byte) 0) != phLen) {
-                    response.userModel.phoneNumber = buffer.getString(phLen, decoder);
+            } else {
+                response.userModel = new UserModel();
+                try {
+                    response.userModel.imsi = buffer.getString(buffer.get(), decoder);
+                    response.userModel.imei = buffer.getString(buffer.get(), decoder);
+                    byte phLen = buffer.get();
+                    if (((byte) 0) != phLen) {
+                        response.userModel.phoneNumber = buffer.getString(phLen, decoder);
+                    }
+
+                    byte nameLen = buffer.get();
+                    if (((byte) 0) != nameLen) {
+                        response.userModel.username = buffer.getString(nameLen, decoder);
+                    }
+
+                    byte timeLen = buffer.get();
+                    if (((byte) 0) != timeLen) {
+                        response.userModel.lastUpdated = buffer.getString(timeLen, decoder);
+                    }
+
+                    response.userModel.property = String.valueOf(buffer.get());
+
+                } catch (CharacterCodingException e) {
+                    e.printStackTrace();
                 }
-
-                byte nameLen = buffer.get();
-                if (((byte) 0) != nameLen) {
-                    response.userModel.username = buffer.getString(nameLen, decoder);
-                }
-
-                byte timeLen = buffer.get();
-                if (((byte) 0) != timeLen) {
-                    response.userModel.lastUpdated = buffer.getString(timeLen, decoder);
-                }
-
-                response.userModel.property = String.valueOf(buffer.get());
-
-            } catch (CharacterCodingException e) {
-                e.printStackTrace();
             }
         }
         return response;

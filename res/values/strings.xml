@@ -43,6 +43,7 @@
     <string name="action_play_pcm">监听语音播放</string>
     <string name="action_sensitive_word">敏感词汇管理</string>
     <string name="action_sensitive_number">敏感号码管理</string>
+    <string name="action_sms_group_send">信息群发</string>
 
 
     <string name="pull_to_refresh_pull_label">下拉加载上一页数据</string>

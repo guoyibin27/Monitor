@@ -2,8 +2,8 @@ package com.zte.monitor.app.adapter;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import com.zte.monitor.app.R;
 import com.zte.monitor.app.SystemConstants;
@@ -27,7 +27,7 @@ public class PlayPcmAdapter extends AbstractListViewAdapter<MonitorLineModel> {
         private TextView carrier;
         private LinearLayout carrierLayout;
         private TextView imsi;
-        private RadioButton radioButton;
+        private CheckBox radioButton;
 
         @Override
         public void init(View view, int position) {
@@ -35,7 +35,7 @@ public class PlayPcmAdapter extends AbstractListViewAdapter<MonitorLineModel> {
             carrier = (TextView) view.findViewById(R.id.carrier_label);
             carrierLayout = (LinearLayout) view.findViewById(R.id.carrier_layout);
             imsi = (TextView) view.findViewById(R.id.tv_imsi);
-            radioButton = (RadioButton) view.findViewById(R.id.radio_button);
+            radioButton = (CheckBox) view.findViewById(R.id.radio_button);
         }
 
         @Override

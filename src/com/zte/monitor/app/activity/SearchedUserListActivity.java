@@ -36,6 +36,7 @@ public class SearchedUserListActivity extends BaseActivity {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             anInterface = IUdpConnectionInterface.Stub.asInterface(iBinder);
+            searchData();
         }
 
         @Override
@@ -73,7 +74,6 @@ public class SearchedUserListActivity extends BaseActivity {
         Intent intent = new Intent(this, UdpDataSendService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
 
-        searchData();
     }
 
     private void searchData() {
