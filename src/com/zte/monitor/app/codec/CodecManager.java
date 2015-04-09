@@ -1035,20 +1035,40 @@ public class CodecManager {
      *
      * @param action
      * @param imsi
-     * @param dataFrom
-     * @param dataTo
+     * @param dateFrom
+     * @param dateTo
+     * @param smsType
      * @return
      */
-    public IoBuffer findSMSInfoReqEncode(byte action, String imsi, String dataFrom, String dataTo) {
+    public IoBuffer findSMSInfoReqEncode(byte action, String imsi, String dateFrom, String dateTo, byte smsType) {
         IoBuffer buffer = createIoBuffer();
         buffer.put((byte) 0x54);
         buffer.put(action);
-        buffer.put((byte) imsi.length());
-        buffer.put(imsi.getBytes());
-        buffer.put((byte) dataFrom.length());
-        buffer.put(dataFrom.getBytes());
-        buffer.put((byte) dataTo.length());
-        buffer.put(dataTo.getBytes());
+        if (!StringUtils.isBlank(imsi)) {
+            byte[] imsiByte = imsi.getBytes();
+            buffer.put((byte) imsiByte.length);
+            buffer.put(imsiByte);
+        } else {
+            buffer.put((byte) 0);
+        }
+
+        if (!StringUtils.isBlank(dateFrom)) {
+            byte[] dateFromByte = dateFrom.getBytes();
+            buffer.put((byte) dateFromByte.length);
+            buffer.put(dateFromByte);
+        } else {
+            buffer.put((byte) 0);
+        }
+
+        if (!StringUtils.isBlank(dateTo)) {
+            byte[] dateToByte = dateTo.getBytes();
+            buffer.put((byte) dateToByte.length);
+            buffer.put(dateToByte);
+        } else {
+            buffer.put((byte) 0);
+        }
+
+        buffer.put(smsType);
         return buffer;
     }
 
@@ -1077,7 +1097,7 @@ public class CodecManager {
                     response.message = buffer.getString(buffer.get(), decoder);
                     response.modMessage = buffer.getString(buffer.get(), decoder);
                     response.scenter = buffer.getString(buffer.get(), decoder);
-                    response.smsType = buffer.getString(buffer.get(), decoder);
+                    response.smsType = buffer.get();
                     response.disCardFlag = buffer.get();
                     response.taskId = buffer.get();
                 }
@@ -1097,16 +1117,35 @@ public class CodecManager {
      * @param dateTo
      * @return
      */
-    public IoBuffer findCallInfoReqEncode(byte action, String imsi, String dateFrom, String dateTo) {
+    public IoBuffer findCallInfoReqEncode(byte action, String imsi, String dateFrom, String dateTo, byte callType) {
         IoBuffer buffer = createIoBuffer();
         buffer.put((byte) 0x56);
         buffer.put(action);
-        buffer.put((byte) imsi.length());
-        buffer.put(imsi.getBytes());
-        buffer.put((byte) dateFrom.length());
-        buffer.put(dateFrom.getBytes());
-        buffer.put((byte) dateTo.length());
-        buffer.put(dateTo.getBytes());
+        if (!StringUtils.isBlank(imsi)) {
+            byte[] bytes = imsi.getBytes();
+            buffer.put((byte) bytes.length);
+            buffer.put(bytes);
+        } else {
+            buffer.put((byte) 0);
+        }
+
+        if (!StringUtils.isBlank(dateFrom)) {
+            byte[] bytes = dateFrom.getBytes();
+            buffer.put((byte) bytes.length);
+            buffer.put(bytes);
+        } else {
+            buffer.put((byte) 0);
+        }
+
+        if (!StringUtils.isBlank(dateTo)) {
+            byte[] bytes = dateTo.getBytes();
+            buffer.put((byte) bytes.length);
+            buffer.put(bytes);
+        } else {
+            buffer.put((byte) 0);
+        }
+
+        buffer.put(callType);
         return buffer;
     }
 
@@ -1125,7 +1164,7 @@ public class CodecManager {
                 response.imsi = buffer.getString(buffer.get(), decoder);
                 response.callTime = buffer.getString(buffer.get(), decoder);
                 response.phNum = buffer.getString(buffer.get(), decoder);
-                response.callType = buffer.getString(buffer.get(), decoder);
+                response.callType = buffer.get();
                 response.taskId = buffer.get();
                 response.readFlag = buffer.get();
             }

@@ -12,7 +12,7 @@ public class SmsInfoResponse extends UdpResponse {
     public String message;
     public String modMessage;
     public String scenter;
-    public String smsType;
+    public byte smsType;
     public byte disCardFlag;
     public byte taskId;
 }

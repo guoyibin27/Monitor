@@ -38,7 +38,6 @@ public class GroupSmsSendActivity extends BaseActivity {
     private TextView imsiListTextView;
     private IUdpConnectionInterface anInterface;
     private List<UserModel> selectedUserList;
-    private ArrayAdapter<KeyValuePair> smsCenterAdapter;
 
     ServiceConnection connection = new ServiceConnection() {
         @Override
@@ -70,7 +69,7 @@ public class GroupSmsSendActivity extends BaseActivity {
                 pair.value = object.getString("center_name");
                 smsCenterList.add(pair);
             }
-            smsCenterAdapter = new ArrayAdapter<KeyValuePair>(this, android.R.layout.simple_spinner_dropdown_item, smsCenterList);
+            ArrayAdapter<KeyValuePair> smsCenterAdapter = new ArrayAdapter<KeyValuePair>(this, android.R.layout.simple_spinner_dropdown_item, smsCenterList);
             smsCenterSpinner.setAdapter(smsCenterAdapter);
         } catch (IOException e) {
             e.printStackTrace();

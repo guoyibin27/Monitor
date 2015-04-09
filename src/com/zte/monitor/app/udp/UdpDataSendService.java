@@ -105,6 +105,8 @@ public class UdpDataSendService extends Service {
         handler.getChain().add((byte) 0x51, new FindBaseInfoResponseHandler(this));
         handler.getChain().add((byte) 0x53, new FindSpcInfoResponseHandler(this));
         handler.getChain().add((byte) 0x68, heartBeatResponseHandler);
+        handler.getChain().add((byte) 0x55, new FindSMSInfoResponseHandler(this));
+        handler.getChain().add((byte) 0x57, new FindCallInfoResponseHandler(this));
     }
 
     /**

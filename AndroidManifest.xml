@@ -159,6 +159,33 @@
                   android:windowSoftInputMode="stateHidden|adjustResize"
                   android:label="短信群发"/>
 
+        <activity android:name=".activity.SearchSmsFromDBActivity"
+                  android:theme="@style/dialog_activity_style"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="短信查询"/>
+
+        <activity android:name=".activity.SmsFromDBDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="短信详情"/>
+
+        <activity android:name=".activity.SmsListFromDBActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="短信列表"/>
+
+        <activity android:name=".activity.SearchCallInfoActivity"
+                  android:theme="@style/dialog_activity_style"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="呼叫信息查询"/>
+
+        <activity android:name=".activity.CallInfoListActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:label="呼叫信息列表"/>
+
 
         <service
                 android:name=".udp.UdpDataSendService"

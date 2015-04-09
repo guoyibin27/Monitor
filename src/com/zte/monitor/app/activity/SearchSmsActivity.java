@@ -109,6 +109,15 @@ public class SearchSmsActivity extends BaseActivity implements SearchView.OnQuer
                 ToastUtils.show(SearchSmsActivity.this, "无搜索结果");
             }
             mAdapter.notifyDataSetChanged();
+        } else {
+            mAdapter.getData().clear();
+            List<SmsModel> smsModelList = smsDao.getSmsList();
+            if (smsModelList != null && smsModelList.size() > 0) {
+                mAdapter.getData().addAll(smsModelList);
+            } else {
+                ToastUtils.show(SearchSmsActivity.this, "无搜索结果");
+            }
+            mAdapter.notifyDataSetChanged();
         }
         return false;
     }
